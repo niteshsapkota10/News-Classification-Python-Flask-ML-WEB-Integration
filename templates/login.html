@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
+    <title>Login</title>
+</head>
+<body background="/static/images/bg.jpg">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <a href="/" class="navbar-brand">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" height="30" alt="News Classification">
+            <a href="#" class="nav-item nav-link">News Detection And Classification</a>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ml-auto">
+                <a href="login.html" class="nav-item nav-link">Login</a>
+                <a href="signup.html" class="nav-item nav-link">SignUp</a>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-lg-4">
+
+        </div>
+        <div class="col-lg-4 form-group" style="border-radius: 25px;background-color: whitesmoke;margin-top: 10%;">
+    <center><h2>Login:</h2>
+    <form action="/loin" method="POST">
+        <label for="Email">Email</label>
+        <input class="form-control" type="email" placeholder="Email" name="email" required>
+        <label for="Password">Password</label>
+        <input class="form-control" type="password" placeholder="Password" name="password" required><br>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+    {% if error %}  
+    <p><strong>Error</strong>: {{error}}</p>  
+    {% endif %} 
+    </center>
+    </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

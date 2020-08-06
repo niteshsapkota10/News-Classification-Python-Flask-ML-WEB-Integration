@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NewsClassification</title>
+    <script src="{{ url_for('static', filename='js/start.js') }}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel='icon' href="{{ url_for('static', filename='images/favicon.ico')}}" type='image/x-icon'/ >
+
+    <script>
+
+      (function($) {
+        "use strict";
+
+    // manual carousel controls
+        $('.next').click(function(){ $('.carousel').carousel('next');return false; });
+         $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
+    
+      })(jQuery);
+    </script>
+    <style>
+    .row-equal > div[class*='col-'] {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.row-equal .card {
+   width: 100%;
+}
+
+/* ensure equal card height inside carousel */
+.carousel-inner>.row-equal.active, 
+.carousel-inner>.row-equal.next, 
+.carousel-inner>.row-equal.prev {
+    display: flex;
+}
+
+/* prevent flicker during transition */
+.carousel-inner>.row-equal.active.left, 
+.carousel-inner>.row-equal.active.right {
+    opacity: 0.5;
+    display: flex;
+}
+
+
+/* control image height */
+.card-img-top-250 {
+    max-height: 150px;
+    overflow:hidden;
+}
+    </style>
+</head>
+<body>
+    >
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <a href="#" class="navbar-brand">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" height="30" alt="News Classification">
+            <a href="#" class="nav-item nav-link">News Detection And Classification</a>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ml-auto">
+                <a href="login.html" class="nav-item nav-link">Login</a>
+                <a href="signup.html" class="nav-item nav-link">SignUp</a>
+            </div>
+        </div>
+    </nav>
+    <hr></hr>
+    <hr></hr>
+    <section class="container-fluid p-t-3">
+      <div class="row">
+          <div class="col-lg-12">
+             <marquee><h3 style="color: brown;">Latest News</h3></marquee>
+          </div>
+      </div>
+  </section>
+  <section class="carousel slide" data-ride="carousel" id="postsCarousel">
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12 text-md-right lead">
+                <center>
+                  <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+                  <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
+                  </center>
+              </div>
+          </div>
+      </div>
+      <div class="container p-t-0 m-t-2 carousel-inner">
+          <div class="row row-equal carousel-item active m-t-0">
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-img-top card-img-top-250">
+                          <img class="img-fluid" src="{{ url_for('static', filename='images/rasuwaghadhi.jpg') }}" alt="Carousel 1">
+                      </div>
+                      <div class="card-block p-t-2">
+                          <h6 class="small text-wide p-b-2">Rasuwagadhi border was closed on Wednesday for 15 days to prevent the spread of coronavirus after a rise in the number of infections in China....</h6>
+                          <h4>
+                              <a href>Rasuwagadhi border shut over coronavirus threat</a>
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-img-top card-img-top-250">
+                          <img class="img-fluid" src="{{ url_for('static', filename='images/kpoli.jpg') }}" alt="Carousel 2">
+                      </div>
+                      <div class="card-block p-t-2">
+                          <h6 class="small text-wide p-b-2">In contradiction to Oli’s claim, Nepal sits near the bottom on numerous indexes, including the Human Development Index and the Legatum Prosperity Index.
+                        </h6>
+                          <h4>
+                              <a href>Fact-checking Oli’s claim regarding Nepal’s ranking on development indexes
+                                </a>
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-img-top card-img-top-250">
+                          <img class="img-fluid" src="{{ url_for('static', filename='images/shezad.jpg') }}" alt="Carousel 3">
+                      </div>
+                      <div class="card-block p-t-2">
+                          <h6 class="small text-wide p-b-2">Shahzad signed for an undisclosed sum, becomes Chitwan’s first foreign player.
+                </h6>
+                          <h4>
+                              <a href>Chitwan Tigers sign on Afghanistan batsman Shahzad for Everest Premier League
+                              </a>
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row row-equal carousel-item m-t-0">
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-img-top card-img-top-250">
+                          <img class="img-fluid" src="{{ url_for('static', filename='images/bhairawha.jpg') }}" alt="Carousel 4">
+                      </div>
+                      <div class="card-block p-t-2">
+                          <h6 class="small text-wide p-b-2">Utilising airport space to install solar panels will allow electricity to be generated at the point of consumption.
+                        </h6>
+                          <h4>
+                              <a href>Solar power plan at Bhairahawa airport snags on land rental rates
+                          </a>
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-img-top card-img-top-250">
+                          <img class="img-fluid" src="{{ url_for('static', filename='images/tea.jpg') }}" alt="Carousel 5">
+                      </div>
+                      <div class="card-block p-t-2">
+                          <h6 class="small text-wide p-b-2"><span class="pull-xs-right"></span>The price of CTC tea has plunged by 50 percent to IRs 65 per kg over the year.</h6>
+                          <h4>
+                              <a href>Nepali tea manufacturers hold their stocks as prices crash
+                             </a>
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 fadeIn wow">
+                  <div class="card">
+                      <div class="card-img-top card-img-top-250">
+                          <img class="img-fluid" src="{{ url_for('static', filename='images/chinaban.jpg') }}" alt="Carousel 6">
+                      </div>
+                      <div class="card-block p-t-2">
+                          <h6 class="small text-wide p-b-2">Visit Nepal plans to attract 350,000 Chinese tourists, which is looking increasingly unlikely in the face of the coronavirus outbreak.
+                          </h6>
+                          <h4>
+                              <a href>China’s ban on outbound tours certain to affect the Visit Nepal campaign
+                         </a>
+                          </h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <hr></hr>
+  <div class="row">
+    <div class="col-lg-6">
+      <center><h3><b>Lionel Messi Wins Record Sixth Ballon d’Or</b></h3>
+      </center><br><br>
+      <img src="{{ url_for('static', filename='images/messiballondr.jpg') }}" alt="Carousel 6" height="400px">
+      <p>
+        Lionel Messi has been awarded the 2019 Ballon d’Or.
+
+At a star-studded ceremony in Paris on Monday evening, the FC Barcelona star was crowned the world’s best player for the first time since 2015 and on a record sixth occasion overall after seeing off strong competition from the likes of Liverpool’s Virgil Van Dijk.
+      </p><p>
+Buzz had been growing for weeks that the Argentine was a cert for soccer’s highest individual accolade. Especially in Catalonia, where the autnomous province’s two main newspapers, Mundo Deportivo and SPORT, filled column inches with claims that the club and country captain had done enough to please the jury.This of course consisted of 176 respected journalists worldwide, but as recent as last week, Mundo Deportivo insisted that France Football, the magazine that established the prize before being joined by FIFA in 2010, had already been in Barcelona to conduct an interview and photoshoot with the 32-year-old.
+</p><p>
+Messi’s stranglehold on the golden ball began in 2009, which is when he claimed the treble under Pep Guardiola and then set off on an unprecedented run of four straight wins that was interrupted by Cristiano Ronaldo. 
+      </p>
+    </div>
+    <div class="col-lg-6">
+      <center>
+        <h3><b>Kane Williamson 95 in vain as Rohit Sharma bosses it in the Super Over</b></h3>
+      </center><br>
+      <img src="{{ url_for('static', filename='images/kanewillmson.jpg') }}" alt="Carousel 6" height="400px">
+      <p>
+
+        India 179 for 5 (Rohit 65, Bennett 3-54) tied with New Zealand 179 for 6 (Williamson 95, Shami 2-32)
+        India won the Super Over
+      </p>
+      <p>
+        A slow pitch and batsmen rising above it. Hamilton was a theatre of shot-making and at the end of a game where neither team had the edge until an astonishing Super Over, India came away deserving winners.
+      </p><p>
+        Kane Williamson made this the classic it turned out to be, scoring 95 off 48 balls - 25 of those runs were made off the normally unhittable Jasprit Bumrah, at a time when the chase was becoming unbearably close - but his team-mates let him down. Walking off the field, with the equation reading two off three balls, he would never have imagined - even having endured that bizarro World Cup final - the events that followed
+      </p><p>
+        New Zealand made 17 in the Super Over against the best death bowler in the world. And in the end, the very end, it still wasn't enough. Rohit Sharma had to hit two sixes off the last two balls of a ridiculous game and even under that pressure one of India's greatest white-ball batsmen rose to the occasion and sent his fans - including those in the dressing room - to utter delirium.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+      <img src="{{ url_for('static', filename='images/kantipurconclave.jpg') }}" width=100%>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-lg-8">
+    <center><img src="{{ url_for('static', filename='images/ku.jpg') }}"></center>
+    <center> <h3><b>How politicisation is dragging <br>Kathmandu University down
+      </b></h3></center>
+      <p style="text-align: center;">
+        Ever since the appointment of vice-chancellor Ram Kantha Makaju, allegations of financial<br> impropriety and a monopoly over decision-making have continued to haunt the university.
+      </p><p style="text-align: center;">
+        This is the first time, ever since its establishment in 1991, that the university has been paralysed for nearly a month by protests. In its nearly two decades of operation, the university has been mercifully free of the political meddling that has long been a salient feature of Nepal’s universities.
+      </p><p style="text-align: center;">
+        But there are now fears among students and educators that Kathmandu University too might be going the way of Tribhuvan University, sacrificing academic excellence and the welfare of students on the altar of political patronage.
+      </p>
+  </div>
+  <div class="col-lg-4">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ url_for('static', filename='images/nepaliwomen.jpg') }}" alt="Card image cap">
+      <div class="card-body">
+        <h6 class="card-title"><b>For Nepali women seeking work in the Gulf, new routes and old risks</b>
+    </h6>
+        <p class="card-text">Despite restrictions from traveling to the Gulf countries, desperate Nepali women are fall...</p>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ url_for('static', filename='images/ktmrivers.jpg') }}" alt="Card image cap">
+      <div class="card-body">
+        <h6 class="card-title"><b>Kathmandu’s rivers are becoming violent—and are gradually vanishing
+</b></h6>
+        <p class="card-text">Buildings and roads have encroached on the floodplains and banks of the Valley’s rivers ...
+</p>
+      </div>
+    </div>
+</div>
+</div>
+<h4 style="text-align: center;">Other News</h4><br>
+<div class="container">
+<div class="row">
+  <div class="col-lg-3" style="border: 2px dotted gray;">
+    <a href="#">A basic school in Rajbiraj fails to attract students
+    </a><br>
+    <a href="#">Bhotekoshi Rural Municipality in Sindhupalchok starts teaching standard Mandarin in community schools
+    </a><br>
+    <a href="#">Haphazard construction of infrastructure in community forests affects ecosystem
+</a><br>
+<a href="#">International experts and animal welfare campaigners urge Nepal to end elephant abuse
+</a><br>
+  </div>
+  <div class="col-lg-3" style="border: 2px dotted salmon;">
+    <a href="#">What is the controversy over Agni Sapkota as Speaker all about?
+</a><br>
+<a href="#">
+  Thaw in Congress party allows for February 19-22 as dates for its general convention
+</a><br>
+<a href="#">
+  Ruling party attempts to court Janata Party, which has conditions of its own
+</a><br>
+<a href="#">
+  Sapkota becomes Speaker amid concerns from conflict victims and rights watchdogs
+</a><br>
+  </div> 
+  <div class="col-lg-3" style="border: 2px dotted indigo;">
+    <a href="#">Traffic Police have made lane discipline more stringent, but only 33 percent of roads in Kathmandu have road markings
+</a><br>
+<a href="#">
+  Police bust a gang of six alleged robbers who in a heist took away Rs5 million from a person in Kathmandu
+</a><br>
+<a href="#">
+  Criticism leads Department of Roads to restore 12 dysfunctional traffic lights, but no one is sure about their longevity
+</a><br>
+<a href="#">
+  Eight years on, Guthi has been barred from leasing land over court case
+</a><br>
+  </div>
+  <div class="col-lg-3" style="border: 2px dotted greenyellow;">
+    <a href="#">Solar power plan at Bhairahawa airport snags on land rental rates
+</a><br>
+<a href="#">
+  Country witnessed higher than normal rainfall this winter season
+</a><br>
+<a href="#">
+  Trisara: Don’t come for the food, come for the space
+</a><br>
+<a href="#">
+  Gorkha: A major destination to consider for a rich travel experience
+</a><br>
+<a href="#">
+  'Trash can' to 'cheese grater': Powerful new Mac Pro is no joke
+</a>
+<br>
+<a href="#">
+  When science and art meet to create designs
+</a><br>
+  </div>
+</div>
+<h4 style="text-align: center;">Cartoons of the month</h4>
+<div class="row">
+  <div class="col-lg-4">
+    <img src="{{ url_for('static', filename='images/cartoon1.jpg') }}" height="300px" width="300px">
+  </div>
+  <div class="col-lg-4">
+    <img src="{{ url_for('static', filename='images/cartoon2.jpg') }}" height="300px" width="300px">
+  </div>
+  <div class="col-lg-4">
+    <img src="{{ url_for('static', filename='images/cartoon3.jpg') }}" height="300px" width="300px">
+  </div>
+</div><br>
+<div class="row">
+  <div class="col-lg-4">
+    <img src="{{ url_for('static', filename='images/cartoon4.jpg') }}" height="300px" width="300px">
+  </div>
+  <div class="col-lg-4">
+    <img src="{{ url_for('static', filename='images/cartoon5.jpg') }}" height="300px" width="300px">
+  </div>
+  <div class="col-lg-4">
+    <img src="{{ url_for('static', filename='images/cartoon6.jpg') }}" height="300px" width="300px">
+  </div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4 bg-light">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+      <div class="col-md-6 mt-md-0 mt-3">
+        <h5 class="text-uppercase">NewsClassification</h5>
+        <p>Automated News Detection And Classification.</p>
+      </div>
+      <hr class="clearfix w-100 d-md-none pb-3">
+      <div class="col-md-3 mb-md-0 mb-3">
+        <h5 class="text-uppercase">Links</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">About Us</a>
+          </li>
+          <li>
+            <a href="#">Gallery</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3 mb-md-0 mb-3">
+        <h5 class="text-uppercase">Links</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">Contact Us</a>
+          </li>
+          <li>
+            <a href="#">Follow us on facebook for latest updates</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://niteshkumarsapkota.com.np">Nitesh Sapkota</a>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

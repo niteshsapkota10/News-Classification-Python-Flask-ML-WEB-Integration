@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="{{ url_for('static', filename='js/form.js') }}"></script>
+    <title>User {{name}}</title>
+</head>
+<body background="/static/images/bg.jpg">
+	<div class="container-fluid">
+		<div class="row">
+			<aside class="col-2 px-0 fixed-top" id="left">
+				<div class="list-group w-100">
+					<a href="profile.html" class="list-group-item active">{{name}}</a>
+					<a href="settings.html" class="list-group-item">Settings</a>
+					<a href="advs.html" class="list-group-item">Advance Settings</a>
+					<a href="logout" class="list-group-item">Logout</a>
+				</div>
+			</aside>
+			<main class="col-10 invisible">
+				<!--hidden spacer-->
+			</main>
+			<main class="col offset-2 h-100">
+				<div class="row bg-light">
+					<div class="col-12 py-4" style="background-color: royalblue;">
+						<h2 style="color: aliceblue;">Fake News Detection..And Automated Classifier..</h2>
+					</div>
+				</div>
+				<div class="row bg-white">
+					<div class="col-12 py-4">
+						<center>
+						<form enctype="multipart/form-data">
+							<div class="form-group">
+							  <label class="sr-only" for="Title">Title</label>
+							  <input type="text" class="form-control" id="TitleInput" placeholder="Title" autocomplete="off" style="width: 629px;"> 
+							</div><br>
+							<div class="form-group">
+							  <label class="sr-only" for="nameInput">News</label>
+							  <textarea class="form-control" id="NewsInput" placeholder="News: " rows="4" cols="50" style="width: 629px; height: 211px;"></textarea>
+							</div>
+							<center><button type="submit" class="btn btn-success">Submit<button></center>
+						  </form>
+						</center>
+						  <br>
+						  </center>
+						  <div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+						  <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+						  <center><h3>*** Classified News ***</h3></center>	
+						  {% for row in rows %}
+						  <div class="news2" style="background-color: whitesmoke; border: 2px dotted red;">      
+        					<center><h3>{{row["title"]}}</h3></center> 
+        					<h4 style="float: right;">{% for i in row2 %}
+								<img class="rounded-circle" src="{{ url_for('static', filename='profilepics/') }}{{i['profilepic']}}" height="25px" width="25px">
+							{% endfor %}{{row["author"]}} Category: {{row["category"]}}</h4>
+							<br><br><p>   {{row["news"]}}</p><br><br>   
+							</div>
+							{% endfor %}					
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
