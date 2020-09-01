@@ -7,3 +7,4 @@ the database.As the result real it classifies its category further.
 
 Support Vector Machine Performed best with both of the datasets.
 
+![ss_ml_web](https://user-images.githubusercontent.com/49119262/91875284-023f2480-ec9b-11ea-94ec-6c4209f813bf.png)
